@@ -341,7 +341,10 @@ async def main():
 
     print("Starting Telegram client...")
 
+    async def main():
+    print("Starting Telegram client...")
     await client.start()
+    me = await client.get_me()
 
     me = await client.get_me()
 
