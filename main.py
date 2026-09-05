@@ -341,10 +341,18 @@ async def main():
 
     print("Starting Telegram client...")
 
-    async def main():
-    print("Starting Telegram client...")
-    await client.start()
-    me = await client.get_me()
+    # Connect without allowing Telethon to open
+    # an interactive login prompt on Railway.
+    await client.connect()
+
+    print("Telegram connection established.")
+
+    # Check whether the StringSession is already authorized.
+    if not await client.is_user_authorized():
+        raise RuntimeError(
+            "❌ SESSION_STRING is not authorized. "
+            "Generate a new Telethon session string."
+        )
 
     me = await client.get_me()
 
